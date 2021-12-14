@@ -1,7 +1,8 @@
 <template>
   <div class="dashboard-container">
     <div class="dashboard-text">name: {{ name }}</div>
-    <div class="dashboard-text">role: {{ role.split(',') }}</div>
+    <div class="dashboard-text">role: {{ role }}</div>
+    <div class="dashboard-text">id: {{ id }}</div>
   </div>
 </template>
 
@@ -13,7 +14,8 @@ export default {
   computed: {
     ...mapGetters([
       'name',
-      'role'
+      'role',
+      'id'
     ])
   }
 }

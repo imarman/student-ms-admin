@@ -13,15 +13,15 @@
         <h3 class="title">登 陆</h3>
       </div>
 
-      <el-form-item prop="mobile">
+      <el-form-item prop="workId">
         <span class="svg-container">
           <svg-icon icon-class="user" />
         </span>
         <el-input
-          ref="mobile"
-          v-model="loginForm.mobile"
-          placeholder="手机号"
-          name="mobile"
+          ref="workId"
+          v-model="loginForm.workId"
+          placeholder="工号"
+          name="workId"
           type="text"
           tabindex="1"
           auto-complete="on"
@@ -47,25 +47,25 @@
           <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
         </span>
       </el-form-item>
-      <div class="cus-div">
-        <el-form-item prop="verifyCode">
-          <el-input
-            ref="verifyCode"
-            v-model="loginForm.verifyCode"
-            class="inp"
-            size="normal"
-            name="verifyCode"
-            type="text"
-            auto-complete="off"
-            placeholder="点击图片更换验证码"
-            @keydown.enter.native="handleLogin"
-          />
-        </el-form-item>
-        <div class="img">
-          <img :src="vcUrl" alt="" style="cursor: pointer" @click="updateVerifyCode">
-        </div>
+      <!--      <div class="cus-div">-->
+      <!--        <el-form-item prop="verifyCode">-->
+      <!--          <el-input-->
+      <!--            ref="verifyCode"-->
+      <!--            v-model="loginForm.verifyCode"-->
+      <!--            class="inp"-->
+      <!--            size="normal"-->
+      <!--            name="verifyCode"-->
+      <!--            type="text"-->
+      <!--            auto-complete="off"-->
+      <!--            placeholder="点击图片更换验证码"-->
+      <!--            @keydown.enter.native="handleLogin"-->
+      <!--          />-->
+      <!--        </el-form-item>-->
+      <!--        <div class="img">-->
+      <!--          <img :src="vcUrl" alt="" style="cursor: pointer" @click="updateVerifyCode">-->
+      <!--        </div>-->
 
-      </div>
+      <!--      </div>-->
 
       <el-button
         :loading="loading"
@@ -89,13 +89,13 @@ export default {
       loginForm: {
         username: 'admin',
         password: '123',
-        mobile: '18888888888',
-        verifyCode: ''
+        workId: '10001'
+        // verifyCode: ''
       },
       loginRules: {
-        mobile: [{ required: true, trigger: 'blur', message: '手机号不能为空' }],
-        password: [{ required: true, trigger: 'blur', message: '密码不能为空' }],
-        verifyCode: [{ required: true, trigger: 'blur', message: '验证码不能为空' }]
+        workId: [{ required: true, trigger: 'blur', message: '手机号不能为空' }],
+        password: [{ required: true, trigger: 'blur', message: '密码不能为空' }]
+        // verifyCode: [{ required: true, trigger: 'blur', message: '验证码不能为空' }]
       },
       loading: false,
       passwordType: 'password',
@@ -111,13 +111,13 @@ export default {
       immediate: true
     }
   },
-  created() {
-    this.updateVerifyCode()
-  },
+  // created() {
+  // this.updateVerifyCode()
+  // },
   methods: {
-    updateVerifyCode() {
-      this.vcUrl = 'http://localhost:8090/api/verifyCode?time=' + new Date().getTime()
-    },
+    // updateVerifyCode() {
+    //   this.vcUrl = 'http://localhost:8090/api/verifyCode?time=' + new Date().getTime()
+    // },
     showPwd() {
       if (this.passwordType === 'password') {
         this.passwordType = ''
@@ -133,9 +133,9 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
-          setTimeout(() => {
-            this.vcUrl = 'http://localhost:8090/api/verifyCode?time=' + new Date().getTime()
-          }, 1000)
+          // setTimeout(() => {
+          //   this.vcUrl = 'http://localhost:8090/api/verifyCode?time=' + new Date().getTime()
+          // }, 1000)
           this.$store.dispatch('user/login', this.loginForm).then(() => {
             this.$router.push({ path: this.redirect || '/' })
             this.loading = false
@@ -143,7 +143,7 @@ export default {
             this.loading = false
           })
         } else {
-          this.vcUrl = 'http://localhost:8090/api/verifyCode?time=' + new Date().getTime()
+          // this.vcUrl = 'http://localhost:8090/api/verifyCode?time=' + new Date().getTime()
           console.log('error submit!!')
           return false
         }
@@ -154,8 +154,6 @@ export default {
 </script>
 
 <style lang="scss">
-/* 修复input 背景不协调 和光标变色 */
-/* Detail see https://github.com/PanJiaChen/vue-element-admin/pull/927 */
 
 $bg: #283443;
 $light_gray: #fff;
@@ -206,10 +204,16 @@ $dark_gray: #889aa4;
 $light_gray: #eee;
 
 .login-container {
-  min-height: 100%;
+  //min-height: 100%;
+  //width: 100%;
+  //background-color: $bg;
+  //overflow: hidden;
   width: 100%;
-  background-color: $bg;
-  overflow: hidden;
+  height: 100%;
+  background-image: url("../../assets/login_images/venom-006.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
 
   .login-form {
     position: relative;
