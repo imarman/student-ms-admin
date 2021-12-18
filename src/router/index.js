@@ -98,7 +98,13 @@ export const constantRoutes = [
         path: '/student-list',
         name: 'StudentList2',
         component: () => import('@/views/student/list'),
-        meta: { title: '学生xxx', icon: 'tree' }
+        meta: { title: '打卡情况', icon: 'tree' }
+      },
+      {
+        path: '/student-list3',
+        name: 'StudentList3',
+        component: () => import('@/views/student/list'),
+        meta: { title: '考勤记录', icon: 'tree' }
       }
     ]
   },
