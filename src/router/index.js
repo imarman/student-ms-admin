@@ -60,24 +60,66 @@ export const constantRoutes = [
     }]
   },
 
+  // {
+  //   path: '/teacher',
+  //   component: Layout,
+  //   redirect: '/teacher/list',
+  //   name: 'Teacher',
+  //   meta: { title: '师资管理', icon: 'el-icon-s-help' },
+  //   children: [
+  //     {
+  //       path: 'list',
+  //       name: 'TeacherList',
+  //       component: () => import('@/views/teacher/list'),
+  //       meta: { title: '教师列表', icon: 'user' }
+  //     },
+  //     {
+  //       path: '/manager-list',
+  //       name: 'ManagerList',
+  //       component: () => import('@/views/manager/list'),
+  //       meta: { title: '校区负责人', icon: 'tree' }
+  //     }
+  //   ]
+  // },
   {
-    path: '/teacher',
+    path: '/student',
     component: Layout,
-    redirect: '/teacher/list',
-    name: 'Teacher',
-    meta: { title: '师资管理', icon: 'el-icon-s-help' },
+    redirect: '/student/list',
+    name: 'Student',
+    meta: { title: '学生管理', icon: 'el-icon-s-help' },
     children: [
       {
         path: 'list',
-        name: 'TeacherList',
-        component: () => import('@/views/teacher/list'),
-        meta: { title: '教师列表', icon: 'user' }
+        name: 'StudentList',
+        component: () => import('@/views/student/list'),
+        meta: { title: '学生列表', icon: 'user' }
       },
       {
-        path: '/manager-list',
-        name: 'ManagerList',
-        component: () => import('@/views/manager/list'),
-        meta: { title: '校区负责人', icon: 'tree' }
+        path: '/student-list',
+        name: 'StudentList2',
+        component: () => import('@/views/student/list'),
+        meta: { title: '学生xxx', icon: 'tree' }
+      }
+    ]
+  },
+  {
+    path: '/college-major',
+    component: Layout,
+    redirect: '/collegeAndMajor/college',
+    name: 'College',
+    meta: { title: '学院&专业', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: '/college',
+        name: 'CollegeList',
+        component: () => import('@/views/collegeAndMajor/college'),
+        meta: { title: '学院管理', icon: 'user' }
+      },
+      {
+        path: '/major',
+        name: 'MajorList',
+        component: () => import('@/views/collegeAndMajor/major'),
+        meta: { title: '专业管理', icon: 'tree' }
       }
     ]
   },

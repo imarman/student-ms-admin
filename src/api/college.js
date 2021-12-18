@@ -1,23 +1,23 @@
 import request from '@/utils/request'
 
-export function getAll(current, limit, name) {
+export function getAll(current, limit, queryParams) {
   return request({
-    url: `/sysUser/all/${current}/${limit}`,
-    method: 'get',
-    params: { name: name }
+    url: `/college/list`,
+    method: 'get'
+    // params: queryParams
   })
 }
 
 export function deleteById(id) {
   return request({
-    url: `/sysUser/delete/${id}`,
+    url: `/college/delete/${id}`,
     method: 'delete'
   })
 }
 
 export function save(data) {
   return request({
-    url: `/sysUser/save`,
+    url: `/college/saveOrUpdate`,
     method: 'post',
     data: data
   })
