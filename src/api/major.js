@@ -8,6 +8,14 @@ export function getAllMajor(current, limit, queryParams) {
   })
 }
 
+export function listByCollege(params) {
+  return request({
+    url: `/college/listByCollege`,
+    method: 'get',
+    params: params
+  })
+}
+
 export function deleteById(id) {
   return request({
     url: `/major/delete/${id}`,

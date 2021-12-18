@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-export function getAll(current, limit, queryParams) {
+export function getAllStudent(current, limit, queryParams) {
   return request({
     url: `/student/list/${current}/${limit}`,
     method: 'get',
@@ -10,7 +10,7 @@ export function getAll(current, limit, queryParams) {
 
 export function deleteById(id) {
   return request({
-    url: `/teacher/delete/${id}`,
+    url: `/student/delete/${id}`,
     method: 'delete'
   })
 }
