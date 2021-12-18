@@ -41,7 +41,7 @@
           width="200"
         >
           <template slot-scope="scope">
-            <el-button v-if="scope.row.collegeName" size="mini" type="success" round>{{
+            <el-button v-if="scope.row.collegeName" size="mini" type="default" round>{{
               scope.row.collegeName
             }}
             </el-button>
@@ -88,7 +88,7 @@
         <el-form-item label="专业名称" label-width="120px">
           <el-input v-model="dialogForm.name" style="width: 300px" autocomplete="off" />
         </el-form-item>
-        <el-form-item label="负责人" label-width="120px">
+        <el-form-item label="所属学院" label-width="120px">
           <el-select v-model="dialogForm.collegeId" placeholder="请选择所属学院" clearable>
             <el-option v-for="item in collegeList" :key="item.id" :label="item.name" :value="item.id" />
           </el-select>
