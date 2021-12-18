@@ -16,6 +16,14 @@ export function login(data) {
   })
 }
 
+export function studentLogin(data) {
+  return request({
+    url: '/sys/student-login',
+    method: 'post',
+    data: data
+  })
+}
+
 export function getInfo() {
   return request({
     url: '/sys/sysUser/getInfo',

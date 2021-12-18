@@ -47,6 +47,10 @@
           <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
         </span>
       </el-form-item>
+      <template>
+        <el-radio v-model="flag" style="color: #b6afaf;margin-left: 20px" label="manager">管理员</el-radio>
+        <el-radio v-model="flag" style="color: #b6afaf" label="student">学生</el-radio>
+      </template>
       <!--      <div class="cus-div">-->
       <!--        <el-form-item prop="verifyCode">-->
       <!--          <el-input-->
@@ -70,7 +74,7 @@
       <el-button
         :loading="loading"
         type="primary"
-        style="width:100%;margin-bottom:30px;"
+        style="width:100%;margin-bottom:60px;margin-top: 20px"
         @click.native.prevent="handleLogin"
       >Login
       </el-button>
@@ -86,6 +90,7 @@ export default {
   name: 'Login',
   data() {
     return {
+      flag: 'manager',
       loginForm: {
         username: 'admin',
         password: '123',
@@ -93,7 +98,7 @@ export default {
         // verifyCode: ''
       },
       loginRules: {
-        workId: [{ required: true, trigger: 'blur', message: '手机号不能为空' }],
+        workId: [{ required: true, trigger: 'blur', message: '账号不能为空' }],
         password: [{ required: true, trigger: 'blur', message: '密码不能为空' }]
         // verifyCode: [{ required: true, trigger: 'blur', message: '验证码不能为空' }]
       },
@@ -136,12 +141,26 @@ export default {
           // setTimeout(() => {
           //   this.vcUrl = 'http://localhost:8090/api/verifyCode?time=' + new Date().getTime()
           // }, 1000)
-          this.$store.dispatch('user/login', this.loginForm).then(() => {
-            this.$router.push({ path: this.redirect || '/' })
-            this.loading = false
-          }).catch(() => {
-            this.loading = false
-          })
+          if (this.flag === 'manager') {
+            this.$store.dispatch('user/login', this.loginForm).then(() => {
+              this.$router.push({ path: this.redirect || '/' })
+              this.loading = false
+            }).catch(() => {
+              this.loading = false
+            })
+          } else if (this.flag === 'student') {
+            const data = {
+              password: this.loginForm.password,
+              username: this.loginForm.username,
+              studentId: this.loginForm.workId
+            }
+            this.$store.dispatch('user/stuLogin', data).then(() => {
+              this.$router.push({ path: this.redirect || '/' })
+              this.loading = false
+            }).catch(() => {
+              this.loading = false
+            })
+          }
         } else {
           // this.vcUrl = 'http://localhost:8090/api/verifyCode?time=' + new Date().getTime()
           console.log('error submit!!')
