@@ -28,7 +28,7 @@
         <el-table-column
           prop="name"
           label="名称"
-          width="120"
+          width="200"
         />
         <el-table-column
           prop="buildTime"
@@ -112,7 +112,7 @@ export default {
   },
   methods: {
     async getAllCollege() {
-      const resp = await getAll()
+      const resp = await getAll(this.queryForm)
       this.collegeList = resp.data
     },
     search() {

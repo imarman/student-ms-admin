@@ -1,10 +1,10 @@
 import request from '@/utils/request'
 
-export function getAll(current, limit, queryParams) {
+export function getAll(queryParams) {
   return request({
     url: `/college/list`,
-    method: 'get'
-    // params: queryParams
+    method: 'get',
+    params: queryParams
   })
 }
 

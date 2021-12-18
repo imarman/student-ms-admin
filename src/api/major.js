@@ -1,11 +1,10 @@
 import request from '@/utils/request'
 
-export function getAll(current, limit, queryParams) {
+export function getAllMajor(current, limit, queryParams) {
   return request({
-    // url: `/major/list/${current}/${limit}`,
-    url: `/major/list`,
-    method: 'get'
-    // params: queryParams
+    url: `/major/list/${current}/${limit}`,
+    method: 'get',
+    params: queryParams
   })
 }
 
