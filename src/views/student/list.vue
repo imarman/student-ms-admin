@@ -158,6 +158,9 @@
             <el-option v-for="item in gradeOptions" :key="item.id" :label="item.name" :value="item.id" />
           </el-select>
         </el-form-item>
+        <el-form-item v-if="!dialogForm.id" label="初始密码" label-width="120px">
+          <el-input v-model="dialogForm.password" style="width: 300px" autocomplete="off" />
+        </el-form-item>
         <el-form-item label="性别" label-width="120px">
           <el-radio v-model="dialogForm.gender" label="男">男</el-radio>
           <el-radio v-model="dialogForm.gender" label="女">女</el-radio>
