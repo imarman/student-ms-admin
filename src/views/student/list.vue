@@ -70,7 +70,7 @@
         <el-table-column
           prop="majorName"
           label="专业"
-          width="300"
+          width="200"
         />
         <el-table-column
           prop="grade"

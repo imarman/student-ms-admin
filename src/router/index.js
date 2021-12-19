@@ -129,7 +129,28 @@ export const constantRoutes = [
       }
     ]
   },
-
+  {
+    path: '/user',
+    component: Layout,
+    redirect: '/user/list',
+    name: 'User',
+    meta: { title: '用户信息', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'info',
+        name: 'UserInfo',
+        component: () => import('@/views/user/info'),
+        meta: { title: '用户详情', icon: 'user' }
+      },
+      {
+        path: '/change',
+        name: 'UserPwd',
+        component: () => import('@/views/user/pwd'),
+        // hidden: true,
+        meta: { title: '修改密码', icon: 'tree' }
+      }
+    ]
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
