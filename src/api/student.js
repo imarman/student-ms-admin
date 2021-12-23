@@ -8,6 +8,13 @@ export function getAllStudent(current, limit, queryParams) {
   })
 }
 
+export function getAll() {
+  return request({
+    url: `/student/all`,
+    method: 'get'
+  })
+}
+
 export function deleteById(id) {
   return request({
     url: `/student/delete/${id}`,

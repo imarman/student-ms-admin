@@ -101,9 +101,9 @@ export const constantRoutes = [
         meta: { title: '打卡情况', icon: 'tree' }
       },
       {
-        path: '/student-list3',
-        name: 'StudentList3',
-        component: () => import('@/views/student/list'),
+        path: '/attendance',
+        name: 'Attendance',
+        component: () => import('@/views/student/attendance'),
         meta: { title: '考勤记录', icon: 'tree' }
       }
     ]
