@@ -179,7 +179,7 @@ export default {
     async getAll() {
       const res = await getAllAttendance(this.current, this.pages, this.queryForm)
       this.attendanceList = res.data.attendanceList
-      this.total = res.data.total
+      this.total = Number(res.data.total)
       if (this.pages <= 1 && this.total <= 5) {
         this.hidePage = true
       }
