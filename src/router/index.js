@@ -60,27 +60,19 @@ export const constantRoutes = [
     }]
   },
 
-  // {
-  //   path: '/teacher',
-  //   component: Layout,
-  //   redirect: '/teacher/list',
-  //   name: 'Teacher',
-  //   meta: { title: '师资管理', icon: 'el-icon-s-help' },
-  //   children: [
-  //     {
-  //       path: 'list',
-  //       name: 'TeacherList',
-  //       component: () => import('@/views/teacher/list'),
-  //       meta: { title: '教师列表', icon: 'user' }
-  //     },
-  //     {
-  //       path: '/manager-list',
-  //       name: 'ManagerList',
-  //       component: () => import('@/views/manager/list'),
-  //       meta: { title: '校区负责人', icon: 'tree' }
-  //     }
-  //   ]
-  // },
+  {
+    path: '/clock-in',
+    component: Layout,
+    redirect: '/clockIn/index',
+    children: [
+      {
+        path: 'list',
+        name: 'ClockIn',
+        component: () => import('@/views/clockIn/index'),
+        meta: { title: '每日健康打卡', icon: 'user' }
+      }
+    ]
+  },
   {
     path: '/student',
     component: Layout,
