@@ -15,6 +15,14 @@ export function getAll() {
   })
 }
 
+export function getById(id) {
+  return request({
+    url: `/student/getById`,
+    method: 'get',
+    params: { id }
+  })
+}
+
 export function deleteById(id) {
   return request({
     url: `/student/delete/${id}`,
