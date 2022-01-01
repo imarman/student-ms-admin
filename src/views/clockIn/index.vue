@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form ref="form" :model="form" :rules="rule" label-width="120px">
+    <el-form ref="form" :model="form" :rules="rule" :disabled="formDisable" label-width="120px">
       <el-form-item label="学号">
         <el-input v-model="form.studentId" disabled />
       </el-form-item>
@@ -14,13 +14,13 @@
         <el-input v-model="form.tel" type="number" />
       </el-form-item>
       <el-form-item label="早上体温" prop="morning">
-        <el-input v-model="form.morning" />
+        <el-input v-model="form.morning" type="number" />
       </el-form-item>
       <el-form-item label="中午体温" prop="moon">
-        <el-input v-model="form.moon" />
+        <el-input v-model="form.moon" type="number" />
       </el-form-item>
       <el-form-item label="晚上体温" prop="night">
-        <el-input v-model="form.night" />
+        <el-input v-model="form.night" type="number" />
       </el-form-item>
       <el-form-item label="身体其他不适">
         <el-input v-model="form.other" />
@@ -41,12 +41,14 @@
 
 <script>
 import { getById } from '@/api/student'
+import { getTodayInfo, save } from '@/api/clockIn'
 
 export default {
   data() {
     return {
       id: this.$store.state.user.id,
       role: this.$store.state.user.role,
+      formDisable: false,
       form: {},
       rule: {
         tel: [
@@ -73,23 +75,36 @@ export default {
     }
   },
   methods: {
+    async getTodayClockIn() {
+      const response = await getTodayInfo(this.form.studentId)
+      if (response.data != null) {
+        this.form = { ...response.data }
+        this.formDisable = true
+      }
+    },
     async getStudentInfoById() {
-      console.log(this.id)
       const res = await getById(this.id)
       this.form.studentId = res.data.studentId
       this.form.studentName = res.data.name
       this.form.grade = res.data.grade
-      console.log(this.form)
+      await this.getTodayClockIn(res.data.studentId)
     },
-    onSubmit() {
-      this.$refs['form'].validate((valid) => {
+    async onSubmit() {
+      try {
+        const valid = await this.$refs['form'].validate()
         if (valid) {
-          console.log(this.form)
-        } else {
-          console.log('error submit!!')
-          return false
+          const resp = await save(this.form)
+          if (resp.code === 99999) {
+            this.$message({
+              type: 'success',
+              message: '打卡成功'
+            })
+            this.formDisable = true
+          }
         }
-      })
+      } catch (e) {
+        console.log('error submit!!')
+      }
     }
   }
 }
