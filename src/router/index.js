@@ -87,9 +87,9 @@ export const constantRoutes = [
         meta: { title: '学生列表', icon: 'user' }
       },
       {
-        path: '/student-list',
-        name: 'StudentList2',
-        component: () => import('@/views/student/list'),
+        path: '/clock-in-list',
+        name: 'clockInList',
+        component: () => import('@/views/clockIn/all'),
         meta: { title: '打卡情况', icon: 'tree' }
       },
       {

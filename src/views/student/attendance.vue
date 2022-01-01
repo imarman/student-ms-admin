@@ -81,7 +81,7 @@
     >
       <el-form :model="dialogForm">
         <el-form-item v-if="dialogForm.id" label="ID" label-width="120px">
-          <el-input v-model="dialogForm.id" disabled style="width: 300px" autocomplete="off" />
+          <el-input v-model="dialogForm.id" disabled style="width: 300px" autocomplete="off"/>
         </el-form-item>
         <el-form-item label="学生" label-width="120px">
           <el-select
@@ -91,11 +91,11 @@
             clearable
             @change="changeStudentName($event)"
           >
-            <el-option v-for="item in studentList" :key="item.id" :label="item.name" :value="item.studentId" />
+            <el-option v-for="item in studentList" :key="item.id" :label="item.name" :value="item.studentId"/>
           </el-select>
         </el-form-item>
         <el-form-item label="课程" label-width="120px">
-          <el-input v-model="dialogForm.className" style="width: 300px" autocomplete="off" />
+          <el-input v-model="dialogForm.className" style="width: 300px" autocomplete="off"/>
         </el-form-item>
         <el-form-item label="缺勤时间时间" label-width="120px">
           <div class="block">

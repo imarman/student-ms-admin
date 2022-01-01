@@ -8,6 +8,14 @@ export function getTodayInfo(id) {
   })
 }
 
+export function getList(current, limit, data) {
+  return request({
+    url: `/daily/list/${current}/${limit}`,
+    method: 'get',
+    params: data
+  })
+}
+
 export function save(data) {
   return request({
     url: `/daily/save`,
