@@ -74,6 +74,32 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/scholarship',
+    component: Layout,
+    redirect: '/scholarship/index',
+    children: [
+      {
+        path: 'index',
+        name: 'Scholarship',
+        component: () => import('@/views/apply/applying'),
+        meta: { title: '资助申请', icon: 'user' }
+      }
+    ]
+  },
+  {
+    path: '/sick',
+    component: Layout,
+    redirect: '/sick/index',
+    children: [
+      {
+        path: 'list',
+        name: 'Sick',
+        component: () => import('@/views/apply/applyingSick'),
+        meta: { title: '申请请假', icon: 'user' }
+      }
+    ]
+  },
+  {
     path: '/student',
     component: Layout,
     redirect: '/student/list',
@@ -97,6 +123,12 @@ export const constantRoutes = [
         name: 'Attendance',
         component: () => import('@/views/student/attendance'),
         meta: { title: '考勤记录', icon: 'tree' }
+      },
+      {
+        path: '/apply-list',
+        name: 'ApplyList',
+        component: () => import('@/views/apply/list'),
+        meta: { title: '申请列表', icon: 'tree' }
       }
     ]
   },
