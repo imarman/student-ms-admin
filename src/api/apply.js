@@ -16,11 +16,11 @@ export function getList(data) {
   })
 }
 
-export function getMyList(studentId) {
+export function getMyList(studentId, type) {
   return request({
     url: `/applying/my-list`,
     method: 'get',
-    params: { studentId: studentId }
+    params: { studentId: studentId, type: type }
   })
 }
 

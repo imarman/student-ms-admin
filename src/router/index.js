@@ -77,12 +77,19 @@ export const constantRoutes = [
     path: '/scholarship',
     component: Layout,
     redirect: '/scholarship/index',
+    meta: { title: '资助', icon: 'el-icon-s-help' },
     children: [
       {
         path: 'index',
         name: 'Scholarship',
         component: () => import('@/views/apply/applying'),
         meta: { title: '资助申请', icon: 'user' }
+      },
+      {
+        path: 'my-apply',
+        name: 'MyApply',
+        component: () => import('@/views/apply/myApplying'),
+        meta: { title: '我的申请', icon: 'user' }
       }
     ]
   },
