@@ -90,12 +90,19 @@ export const constantRoutes = [
     path: '/sick',
     component: Layout,
     redirect: '/sick/index',
+    meta: { title: '请假', icon: 'el-icon-s-help' },
     children: [
       {
         path: 'list',
         name: 'Sick',
         component: () => import('@/views/apply/applyingSick'),
         meta: { title: '申请请假', icon: 'user' }
+      },
+      {
+        path: 'my-sick',
+        name: 'MySick',
+        component: () => import('@/views/apply/myApplyingSick'),
+        meta: { title: '我的申请', icon: 'user' }
       }
     ]
   },
