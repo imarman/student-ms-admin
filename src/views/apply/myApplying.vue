@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <h3>请假申请列表</h3>
-    <el-divider/>
+    <el-divider />
     <el-table
       :data="tableData"
       border
@@ -35,7 +35,7 @@
         width="120"
       >
         <template slot-scope="scope">
-          <span v-if="scope.row.type === 'leave'">请假</span>
+          <span v-if="scope.row.type === 'scholarship'">申请资助</span>
         </template>
       </el-table-column>
       <el-table-column
@@ -59,7 +59,10 @@
       center
     >
       <el-form :model="dialogForm">
-        <el-form-item v-if="dialogForm.content" label="" label-width="120px">
+        <el-form-item v-if="dialogForm.pic" label="" label-width="120px">
+          <el-image style="width: 400px;" :src="dialogForm.pic" />
+        </el-form-item>
+        <el-form-item label="" label-width="120px">
           {{ dialogForm.content }}
         </el-form-item>
       </el-form>
@@ -78,7 +81,7 @@ export default {
       role: this.$store.state.user.role,
       tableData: [],
       dialogForm: {},
-      type: 'leave'
+      type: 'scholarship'
     }
   },
   created() {
