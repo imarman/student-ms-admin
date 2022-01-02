@@ -8,11 +8,11 @@ import request from '@/utils/request'
 //   })
 // }
 
-export function getList(data) {
+export function getList(current, limit, params) {
   return request({
-    url: `/applying/list`,
+    url: `/applying/list/${current}/${limit}`,
     method: 'get',
-    params: data
+    params: params
   })
 }
 
@@ -28,6 +28,14 @@ export function save(data) {
   return request({
     url: `/applying/save`,
     method: 'post',
+    data: data
+  })
+}
+
+export function changeStatus(data) {
+  return request({
+    url: `/applying/changeStatus`,
+    method: 'put',
     data: data
   })
 }
